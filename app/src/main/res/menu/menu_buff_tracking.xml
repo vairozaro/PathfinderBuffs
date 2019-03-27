@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.gamecodeschool.pathbuffs.Activities.BuffTrackingActivity">
+    <item
+        android:id="@+id/tab_cast_spells"
+        android:orderInCategory="1"
+        android:title="@string/cast_spell"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tab_active_buff"
+        android:orderInCategory="2"
+        android:title="@string/Active_Buffs"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/tab_calc_bonus"
+        android:orderInCategory="2"
+        android:title="@string/calculate_bonus"
+        app:showAsAction="never"/>
+</menu>

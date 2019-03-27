@@ -1,0 +1,18 @@
+<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 99=Other-->
+<!--Type 0=Enhance, 1=Luck, 2=Sacred, 3=Profane, 4=Untyped, 5=Alchemical, 6=Moral-->
+<Abilities>
+    <ability>
+        <name>Weapon Training</name>
+        <bonus_to>99</bonus_to>
+    </ability>
+    <ability>
+        <name>Brawler's Flurry</name>
+        <bonus_to>99</bonus_to>
+    </ability>
+    <ability>
+        <name>Rage</name>
+        <bonus_to>2</bonus_to>
+        <type>6</type>
+        <bonus>4</bonus>
+    </ability>
+</Abilities>

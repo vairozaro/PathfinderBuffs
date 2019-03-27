@@ -1,0 +1,32 @@
+<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 99=Other-->
+<feats>
+    <feat>
+        <name>Power Attack</name>
+        <bonus_to>99</bonus_to>
+    </feat>
+    <feat>
+        <name>Weapon Focus</name>
+        <bonus_to>0</bonus_to>
+        <bonus>1</bonus>
+    </feat>
+    <feat>
+        <name>Greater Weapon Focus</name>
+        <bonus_to>0</bonus_to>
+        <bonus>1</bonus>
+    </feat>
+    <feat>
+        <name>Weapon Specialization</name>
+        <bonus_to>1</bonus_to>
+        <bonus>2</bonus>
+    </feat>
+    <feat>
+        <name>Dedicated Adversary</name>
+        <bonus_to>3</bonus_to>
+        <bonus>2</bonus>
+    </feat>
+    <feat>
+        <name>Weapon Training</name>
+        <bonus_to>3</bonus_to>
+        <bonus>2</bonus>
+    </feat>
+</feats>

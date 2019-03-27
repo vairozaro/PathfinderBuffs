@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spn_style_of_attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/style_of_attack">
+
+            </android.support.v7.widget.AppCompatSpinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weapon_enhancement"
+                android:textSize="20sp"/>
+
+            <RadioGroup
+                android:id="@+id/rgroup_enhance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checkedButton="@+id/rbtn_enhance0"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhance0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/_0" />
+                <RadioButton
+                    android:id="@+id/rbtn_enhanceMW"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m"/>
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhance1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/_1" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhance2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/_2" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhance3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/_3" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhance4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/_4" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhance5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/_5" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/weapon_training" />
+                <ToggleButton
+                    android:id="@+id/tbtn_weapon_training"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/weapon_training" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/brawler_s_flurry" />
+                <ToggleButton
+                    android:id="@+id/tbtn_brawlers_flurry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/brawler_s_flurry" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp">
+
+                <TextView
+                    android:id="@+id/txt_attack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attack"
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txt_attack_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textSize="30sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_lay_damage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp">
+
+                <TextView
+                    android:id="@+id/txt_damage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/damage"
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txt_damage_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textSize="30sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

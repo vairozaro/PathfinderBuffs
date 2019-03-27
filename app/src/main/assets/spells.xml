@@ -1,0 +1,56 @@
+<!--Duration 0=round/level, 1=1 minute, 2= min/level, 3 = 10min/level, 4=hour/level-->
+<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 99=Other-->
+<!--Type 0=Enhance, 1=Luck, 2=Sacred, 3=Profane, 4=Untyped, 5=Alchemical, 6=Moral-->
+<Spells>
+    <spell>
+        <name>Bull's Strength</name>
+        <duration>2</duration>
+        <bonus_to>2</bonus_to>
+        <bonus>4</bonus>
+        <scaling>0</scaling>
+        <type>0</type>
+        <attribute>0</attribute>
+        <class_list>Alchemist,Bloodrager,Cleric,Druid,Magus,Paladin,Psychic,Shaman,Summoner,Wizard</class_list>
+    </spell>
+    <spell>
+        <name>Divine Favor</name>
+        <duration>1</duration>
+        <bonus_to>3</bonus_to>
+        <bonus>1</bonus>
+        <scaling>1</scaling>
+        <type>1</type>
+        <class_list>Cleric,Inquisitor,Paladin</class_list>
+    </spell>
+    <spell>
+        <name>Mighty Strength</name>
+        <duration>2</duration>
+        <bonus_to>2</bonus_to>
+        <bonus>8</bonus>
+        <scaling>0</scaling>
+        <type>0</type>
+        <attribute>0</attribute>
+        <class_list>Cleric,Paladin</class_list>
+    </spell>
+    <spell>
+        <name>Bestow Weapon Proficiency</name>
+        <duration>2</duration>
+        <bonus_to>99</bonus_to>
+        <class_list>Alchemist,Cleric,Inquisitor,Magus,Paladin,Psychic,Witch,Wizard</class_list>
+    </spell>
+    <spell>
+        <name>Resist Energy</name>
+        <duration>3</duration>
+        <bonus_to>99</bonus_to>
+        <scaling>2</scaling>
+        <class_list>Alchemist,Bloodrager,Cleric,Druid,Inquisitor,Occultist,Paladin,Psychic,Ranger,Shaman,Wizard,Spiritualist,Summoner</class_list>
+    </spell>
+    <spell>
+        <name>Divine Power</name>
+        <duration>0</duration>
+        <bonus>1</bonus>
+        <bonus_to>3</bonus_to>
+        <type>1</type>
+        <class_list>Cleric,Inquisitor,Shaman</class_list>
+        <speed>1</speed>
+    </spell>
+</Spells>

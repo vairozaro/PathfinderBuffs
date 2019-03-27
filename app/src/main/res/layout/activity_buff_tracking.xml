@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Activities.BuffTrackingActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_weight="9"
+                android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/grey">
+
+            <Button
+                android:id="@+id/oneRound"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="1 Round"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="16sp"
+                android:onClick="OneRound"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/oneMinute"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="1 Min"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="16sp"
+                android:onClick="OneMinute"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/tenMinutes"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="10 min"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="16sp"
+                android:onClick="TenMinutes"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/oneHour"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="1 Hour"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="16sp"
+                android:onClick="OneHour"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

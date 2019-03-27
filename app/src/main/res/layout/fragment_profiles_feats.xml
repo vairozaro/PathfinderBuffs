@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ll_character_feats">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:id="@+id/recycler_view_profile_feats">
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/btn_add_feat_to_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Add Feat"
+                android:layout_weight="1"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:id="@+id/recycler_view_profile_abilities">
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/btn_add_ability_to_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Ability"
+                android:layout_weight="1"
+                android:layout_gravity="bottom|center"/>
+        </LinearLayout>-->
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
