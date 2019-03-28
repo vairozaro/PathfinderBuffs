@@ -37,8 +37,11 @@ public class FeatManager implements Iterable<Feats>
                         bonuses[attackBonus] = bonuses[attackBonus] + x.bonus;
                         bonuses[damageBonus] = bonuses[damageBonus] + x.bonus;
                         break;
+                        //IF a feat does not have the same attack and damage bonus
+                        //Use other and get the bonus of that.
                     case OTHER:
                         int[] tempBonus = new int[]{0,0};
+                        //Also used for Deadly Aim and Piranhe Strike
                         if (x.name.equals("Power Attack"))
                         {
                             tempBonus = powerAttack();
@@ -68,6 +71,7 @@ public class FeatManager implements Iterable<Feats>
         int[] bonus = new int[]{0,0};
         int additionalBonus;
 
+        //Decide bonus based on attack style
         if(BuffManager.getStyleOfAttack() == Enums.StyleOfAttack.TWO_HANDED)
         {
             additionalBonus = 3;
@@ -103,7 +107,8 @@ public class FeatManager implements Iterable<Feats>
         return bonus;
     }
 
-
+    //Checks if feat is currently an active feat adding a bonus.  Used to display
+    //The toggle button on if it is true
     public static boolean isFeatActive(String s)
     {
         boolean isActive = false;
@@ -119,6 +124,7 @@ public class FeatManager implements Iterable<Feats>
         return isActive;
     }
 
+    //Adds a feat to active feats.  First checks if it is already there.
     public static void addActiveFeat(String s)
     {
         Feats f = new Feats();

@@ -19,6 +19,7 @@ import java.util.ListIterator;
  * Created by Jason on 5/5/2018.
  */
 
+//This class manages all the Spells class and Buff class along with calculating the total bonus
 public class BuffManager implements Iterable<Buff>
 {
     private static ArrayList<Spells> allSpellsList;
@@ -40,7 +41,7 @@ public class BuffManager implements Iterable<Buff>
     static int casterLevel = 10;
     static int bab = 10;
 
-    //Add new spells
+    //Add new spells to master list and the type it is to attack or damage list
     public static void addBuff(Buff b)
     {
         buffList.add(b);
@@ -65,6 +66,7 @@ public class BuffManager implements Iterable<Buff>
                 break;
         }
     }
+    //Finds the spell and adds it as a buff
     public static void castSpell(String n)
     {
         Spells s = new Spells();
@@ -77,6 +79,7 @@ public class BuffManager implements Iterable<Buff>
         }
         addBuff(new Buff(s.name, s.type, s.bonus_to, s.bonus, s.getDuration(), s.scaling, s.speed));
     }
+    //Add a spell to the favorites list
     public static void addSpellToFavorites(String n)
     {
         if(!favoritesContainsSpells(n)) {
@@ -99,6 +102,7 @@ public class BuffManager implements Iterable<Buff>
         }
         favoriteSpells.remove(s);
     }
+    //Check to see if a spell is on the favorites list
     public static boolean favoritesContainsSpells(String n)
     {
         boolean contains = false;
@@ -109,9 +113,9 @@ public class BuffManager implements Iterable<Buff>
                 contains = true;
             }
         }
-        return true;
+        return contains;
     }
-    //Remove Buffs
+    //Check to see if a buff is on the active list
     public static boolean isBuffActive(String n)
     {
         boolean activeBuff = false;
@@ -126,6 +130,7 @@ public class BuffManager implements Iterable<Buff>
 
         return activeBuff;
     }
+    //Removes a buff from the master bufflist and from the attack or damage list it is on.
     public static void dispelBuff(String dispelBuff)
     {
         Buff b = new Buff();
@@ -159,6 +164,7 @@ public class BuffManager implements Iterable<Buff>
         }
         size--;
     }
+    //On round button clicked it will remove the rounds.  If the rounds are <=0 remove the spell
     public static void removeRound(int timePass)
     {
         List<Buff> tempList = new LinkedList<Buff>();
@@ -210,6 +216,7 @@ public class BuffManager implements Iterable<Buff>
 
         return bonus;
     }
+    //Helper class for addSpellBonus
     private static int addSpellBonusX(List<Buff> attackOrDamageList)
     {
         Buff tempBuff;
@@ -246,6 +253,7 @@ public class BuffManager implements Iterable<Buff>
         return bonus;
     }
 
+    //calculates that is displayed on the TabFragmentAttack class
     public static void calculateBonus()
     {
         int[] bonus = new int[]{0,0};
@@ -255,9 +263,11 @@ public class BuffManager implements Iterable<Buff>
         int[] featBonus = FeatManager.calculateFeatBonus();
         int[] abilitiesBonus = AbilitiesManager.calculateBonus();
 
+        //Add bonuses from spells, feats, and abilities
         bonus[attackBonus] = addSpellBonus(Enums.BonusTo.ATTACK) + featBonus[attackBonus] + abilitiesBonus[attackBonus] + bab;
         bonus[damageBonus] = addSpellBonus(Enums.BonusTo.DAMAGE) + featBonus[damageBonus] + abilitiesBonus[attackBonus];
 
+        //Depending on the style of attack add the right attribute to attack and damage
         switch (styleOfAttack)
         {
             case ONE_HANDED:
@@ -280,12 +290,14 @@ public class BuffManager implements Iterable<Buff>
                 bonus[damageBonus] = bonus[damageBonus] + strMod;
                 break;
         }
+        //Add enhancement bonus
         if (weaponEnhancement == 99) {
             bonus[attackBonus] = bonus[attackBonus] + 1;
         }else {
             bonus[attackBonus] = bonus[attackBonus] + weaponEnhancement;
             bonus[damageBonus] = bonus[damageBonus] + weaponEnhancement;
         }
+        //If a spell has the enum Speed change Speed in this class
         for(Buff b: buffList)
         {
             if(b.speed == Enums.Speed.SPEED_ACTIVE)
@@ -294,9 +306,11 @@ public class BuffManager implements Iterable<Buff>
             }
         }
 
+        //set the textviews with that attack and damage
         TabFragmentAttack.changeTextViews(attackToString(bonus[attackBonus]), bonus[damageBonus]);
 
     }
+    //Displays the attack as a string
     private static String attackToString(int Bonus)
     {
         String bonusText = "";
@@ -305,7 +319,7 @@ public class BuffManager implements Iterable<Buff>
         int tempBab = bab;
         int BrawlerFlurry = bab;
 
-
+        //If using two weapons then modify the style of attack that is displayed
         if(WEAPONS == Enums.AmountOfWeapons.TWO_WEAPONS)
         {
             if (styleOfAttack == Enums.StyleOfAttack.TWO_HANDED)
@@ -318,10 +332,12 @@ public class BuffManager implements Iterable<Buff>
             }
         }
 
+        //Create the string of attack values
         speedBonus = TempBonus;
         do {
 
             bonusText = bonusText + Integer.toString(TempBonus);
+            //IF two weapon fighting display the addition attack number
             if(WEAPONS == Enums.AmountOfWeapons.TWO_WEAPONS)
             {
                 if(BrawlerFlurry > 0)
@@ -341,10 +357,12 @@ public class BuffManager implements Iterable<Buff>
             }
 
         }while (tempBab > 0);
+        //IF speed is active add an addition attack at highest attack value
         if(SPEED == Enums.Speed.SPEED_ACTIVE)
         {
             bonusText = bonusText + " / " + speedBonus;
         }
+        //Reset speed to default
         SPEED = Enums.Speed.NO_SPEED;
 
         return bonusText;
@@ -355,6 +373,7 @@ public class BuffManager implements Iterable<Buff>
         return buffList.iterator();
     }
 
+    //returns a list of all spells on any given class list
     public static List<Spells> getClassSpellList(Enums.ClassList c)
     {
         ArrayList<Spells> spellList = new ArrayList<>();
@@ -384,6 +403,7 @@ public class BuffManager implements Iterable<Buff>
     public static Enums.StyleOfAttack getStyleOfAttack() {
         return styleOfAttack;
     }
+    //Gets the modifier for any particular ability score
     public static int getModifier(Enums.Attribute stat)
     {
         int abilityScore = AllProfiles.currentProfile.attirbute[stat.getValue()];
@@ -399,6 +419,7 @@ public class BuffManager implements Iterable<Buff>
         return modifier /2;
 
     }
+    //Get any given spell
     public static Spells getSpell(String name)
     {
         Spells s = new Spells();

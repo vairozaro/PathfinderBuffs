@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 import static com.gamecodeschool.pathbuffs.jsjf.Enums.ClassList.ALCHEMIST;
 
+//Public class of all enums
 public class Enums {
     public enum Duration
     {

@@ -15,6 +15,9 @@ import com.gamecodeschool.pathbuffs.jsjf.ClickListener;
 import com.gamecodeschool.pathbuffs.jsjf.ListViewAdapters.SpellListViewAdaptor;
 import com.gamecodeschool.pathbuffs.Activities.spellLists;
 
+//This fragment is one of the fragments for BuffTrackingActivity
+//This fragment displays all the spells on the favorite spell list
+//It displays each spells name and a cast button.  On cast add it to active buffs
 public class TabFragmentSpellSearch extends android.support.v4.app.Fragment {
 
     static SpellListViewAdaptor mAdapter = new SpellListViewAdaptor(BuffManager.getAllSpellsList(), new ClickListener() {

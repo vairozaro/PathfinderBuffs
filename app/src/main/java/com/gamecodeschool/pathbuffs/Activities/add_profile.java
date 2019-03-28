@@ -14,6 +14,7 @@ import com.gamecodeschool.pathbuffs.jsjf.Profiles.Profile;
 
 import static com.gamecodeschool.pathbuffs.jsjf.Files.*;
 
+//This class is used to add a new profile to the saved proviles
 public class add_profile extends AppCompatActivity {
 
     EditText[] addProfileEditText = new EditText[9];
@@ -24,6 +25,7 @@ public class add_profile extends AppCompatActivity {
         setEditViews(addProfileEditText, (LinearLayout)findViewById(R.id.ll_edit_text_add_profile));
     }
 
+    //Create the edit views and put into an array
     private void setEditViews(EditText[] arraySelected, LinearLayout llSelected)
     {
         for(int i = 0; i < arraySelected.length; i++)
@@ -33,11 +35,11 @@ public class add_profile extends AppCompatActivity {
             value.setTextSize(20);
             value.setLayoutParams(new LinearLayout.LayoutParams(500, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
             value.setGravity(Gravity.CENTER);
-            if (i == 0)
+            if (i == 0) //For entering the name
             {
                 value.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
             }
-            else
+            else //for entering only numbers
             {
                 value.setInputType(InputType.TYPE_CLASS_NUMBER);
             }
@@ -47,24 +49,27 @@ public class add_profile extends AppCompatActivity {
         }
     }
 
+    //this will add a new profile to the text file that the profiles are saved to
     public void saveProfile(View view)
     {
         String[] newPro = new String[addProfileEditText.length];
         for(int i = 0; i < addProfileEditText.length; i++)
         {
+            //If a EditView is empty set the defaults as below and add to array of strings
+            //else add what is in the EditView to the array of strings
             if(addProfileEditText[i].getText().toString().equals(""))
             {
                 if(i == 1 || i == 2)
                 {
-                    newPro[i] = "1";
+                    newPro[i] = "1";//level and BAB
                 }
                 else if (i > 2)
                 {
-                    newPro[i] = "10";
+                    newPro[i] = "10"; //attributes
                 }
                 else
                 {
-                    newPro[i] = "No Name";
+                    newPro[i] = "No Name"; //name
                 }
             }
             else {
@@ -72,6 +77,7 @@ public class add_profile extends AppCompatActivity {
             }
         }
 
+        //initilize variables in the creation of a profile
         String proName ="";
         int[] proAttribute = new int[6];
         int level =0;
@@ -81,7 +87,6 @@ public class add_profile extends AppCompatActivity {
 
         for(int i = 0; i < newPro.length; i++)
         {
-            //proAttribute[i] = Integer.parseInt(newPro[i+1]);
             switch (i){
                 case 0: //name
                     proName = newPro[i];
@@ -108,12 +113,15 @@ public class add_profile extends AppCompatActivity {
 
         AllProfiles.addProfile(new Profile(proName, proAttribute, level, bab, selected));
 
+        //Save the profile to the txt document
         saveStatsFile(this);
         openStatsFile(this);
         start_up.activateButtons();
 
+        //Close activity and return to previous activity
         this.finish();
     }
 
+    //Close activity and return to previous activity
     public void doNotAdd(View view) { this.finish(); }
 }

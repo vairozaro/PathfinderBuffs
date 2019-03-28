@@ -19,6 +19,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+//This adapter displays the favorite spell list for TabFragmentSpellSearch.  On cast button press
+//add the spell as a buff to the current active buffs list and update TabFragmentActiveBuffs list
 public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdaptor.MyViewHolder>{
     private List<Spells> mSpells;
     private final ClickListener listener;
@@ -33,20 +35,19 @@ public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdap
         public Button button;
         private WeakReference<ClickListener> listenerRef;
 
-
         public MyViewHolder(final View view, ClickListener listener){
             super(view);
             listenerRef = new WeakReference<>(listener);
 
-
             name = (TextView) view.findViewById(R.id.spellCastName);
             button = (Button) view.findViewById(R.id.castBtn);
-
-
 
             button.setOnClickListener(this);
         }
 
+        //On cast button click add the spell as a buff class to active buff list
+        //Then update this fragment to remove button and update TabFragmentSpellSearch to display
+        //the buff
         public void onClick(View v)
         {
             if(v.getId() == button.getId())
@@ -77,6 +78,8 @@ public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdap
         Spells spell = mSpells.get(position);
         holder.name.setText(spell.getName());
 
+        //Checks to see if the current Spell is an active buff.  If it is remove the button
+        //so it can not be added again.  Else enable button
         if(BuffManager.isBuffActive((String) holder.name.getText()))
         {
             holder.button.setVisibility(View.INVISIBLE);

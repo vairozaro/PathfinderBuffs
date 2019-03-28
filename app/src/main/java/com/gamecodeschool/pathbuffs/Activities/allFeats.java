@@ -10,6 +10,7 @@ import com.gamecodeschool.pathbuffs.jsjf.ClickListener;
 import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.FeatManager;
 import com.gamecodeschool.pathbuffs.jsjf.ListViewAdapters.FeatsListViewAdaptor;
 
+//Activity that displays all the feats that are loaded in.
 public class allFeats extends AppCompatActivity {
 
     static FeatsListViewAdaptor mAdapter = new FeatsListViewAdaptor(FeatManager.getAllFeatsList(), new ClickListener() {

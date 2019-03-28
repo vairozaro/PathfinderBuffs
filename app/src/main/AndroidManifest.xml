@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Activities.Activity_Attack" />
         <activity android:name=".Activities.add_profile" />
         <activity android:name=".Activities.start_up">
             <intent-filter>

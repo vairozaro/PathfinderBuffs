@@ -9,6 +9,9 @@ import android.os.Bundle;
 import com.gamecodeschool.pathbuffs.R;
 import com.gamecodeschool.pathbuffs.jsjf.ListViewAdapters.CharacterPagerAdapter;
 
+//This activity manages the fragments that have to do with the Character
+//  TabFragmentAttributes
+//  TabFragmentFeats
 public class Character extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private CharacterPagerAdapter mPagerAdaper;
@@ -20,10 +23,8 @@ public class Character extends AppCompatActivity implements TabLayout.OnTabSelec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        //Sets the toolbar with the tabs and the text
         tabLayout = (TabLayout)findViewById(R.id.tabLayout_character);
-
         tabLayout.addTab(tabLayout.newTab().setText("Character"));
         tabLayout.addTab(tabLayout.newTab().setText("Feats/Ablities"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

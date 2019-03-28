@@ -18,6 +18,8 @@ import com.gamecodeschool.pathbuffs.jsjf.Profiles.AllProfiles;
 import java.util.ArrayList;
 import java.util.List;
 
+//Displays active feats in the BuffTrackingActivity on the Fragment TabFragmentFeats
+//Uses toggle button an checks to see if it is active to set state of toggle button
 public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeatsListViewAdapter.MyViewHolder>{
     private List<Feats> mFeats;
 
@@ -35,6 +37,8 @@ public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeats
 
             name = (TextView) view.findViewById(R.id.txt_feat_name_toggle);
             button = (ToggleButton) view.findViewById(R.id.tbtn_feat);
+            //Checks to see if feat is currently active and adding bonus
+            //if so set the button to on.
             if(FeatManager.isFeatActive((String) name.getText()))
             {
                 button.setChecked(true);
@@ -44,7 +48,7 @@ public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeats
         }
 
 
-        @Override
+        //Add or remove feat from active feat list based on toggle button change state
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked)
             {

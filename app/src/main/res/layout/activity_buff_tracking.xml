@@ -49,7 +49,7 @@
                 android:text="1 Round"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textSize="16sp"
-                android:onClick="OneRound"
+                android:onClick="timePasses"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/oneMinute"
@@ -58,7 +58,7 @@
                 android:text="1 Min"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textSize="16sp"
-                android:onClick="OneMinute"
+                android:onClick="timePasses"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/tenMinutes"
@@ -67,7 +67,7 @@
                 android:text="10 min"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textSize="16sp"
-                android:onClick="TenMinutes"
+                android:onClick="timePasses"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/oneHour"
@@ -76,7 +76,7 @@
                 android:text="1 Hour"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textSize="16sp"
-                android:onClick="OneHour"
+                android:onClick="timePasses"
                 android:layout_weight="1"/>
 
         </LinearLayout>

@@ -9,6 +9,7 @@ import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentAttack;
 import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentFeats;
 import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentSpellSearch;
 
+//This adapter manages the tabs for BuffTrackingActivity
 public class PagerAdapter extends FragmentPagerAdapter {
     int numOfTabs;
     private String[] tabTitles = new String[]{"Cast Spells", "Active Buffs", "Feats", "Calculate Bonus"};

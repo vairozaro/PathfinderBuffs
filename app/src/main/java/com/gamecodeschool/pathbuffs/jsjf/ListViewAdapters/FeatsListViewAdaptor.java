@@ -23,6 +23,7 @@ import java.util.List;
 
 import static com.gamecodeschool.pathbuffs.jsjf.Files.saveFeatsFile;
 
+//This class displays all loaded feats.  On add button pressed it saves to the current profile that feat
 public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdaptor.MyViewHolder>{
     private List<Feats> mFeats;
     private final ClickListener listener;
@@ -36,10 +37,9 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
         public TextView name;
         public Button button;
         private WeakReference<ClickListener> listenerRef;
-        boolean hasfeat;
         Feats f;
 
-
+        //Sets view and variables
         public MyViewHolder(final View view, ClickListener listener){
             super(view);
             listenerRef = new WeakReference<>(listener);
@@ -52,6 +52,8 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
 
         }
 
+        //On click add the feat to the current profile, save the feats to that profile and update
+        //This adapter and the profile feats
         public void onClick(View v)
         {
             if(v.getId() == button.getId())
@@ -84,6 +86,8 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
     public void onBindViewHolder(FeatsListViewAdaptor.MyViewHolder holder, int position) {
         Feats feat = mFeats.get(position);
         holder.name.setText(feat.getName());
+        //If feat is currently saved to profile remove button so can not be added again.
+        //Else display the add button.
         if(AllProfiles.currentProfile.hasFeat((String) holder.name.getText()))
         {
             holder.button.setVisibility(View.INVISIBLE);

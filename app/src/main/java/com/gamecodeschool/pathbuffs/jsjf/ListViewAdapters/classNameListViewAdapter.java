@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+//Adapter shows all classes with spells.  On selection of class display spells for that
+//class in classSpellListViewAdapter
 public class classNameListViewAdapter extends RecyclerView.Adapter<classNameListViewAdapter.MyViewHolder>{
     private ArrayList<String> mClassNames = new ArrayList<>();
 
@@ -35,7 +37,7 @@ public class classNameListViewAdapter extends RecyclerView.Adapter<classNameList
 
         }
 
-        @Override
+        //Update classSpellListViewAdapter with spell list selected
         public void onClick(View view)
         {
             spellLists.updateClassSpellList((String) name.getText(), view.getContext());

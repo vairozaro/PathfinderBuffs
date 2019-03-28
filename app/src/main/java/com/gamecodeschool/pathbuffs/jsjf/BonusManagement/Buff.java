@@ -24,13 +24,6 @@ public class Buff implements Comparator<Buff>
     {
 
     }
-/*    public Buff(String n)
-    {
-        name = n;
-        type = Enums.Type.UNTYPED;
-        bonus = 2;
-        rounds = 10;
-    }*/
 
     public Buff(String n, Enums.Type t, Enums.BonusTo bt, int b, int r, Enums.Scaling scaling, Enums.Speed speed)
     {
@@ -79,6 +72,8 @@ public class Buff implements Comparator<Buff>
     public Enums.Type getType() {
         return type;
     }
+
+    //display rounds in string
     public String getRoundsString()
     {
         String roundDisplay;
@@ -111,8 +106,7 @@ public class Buff implements Comparator<Buff>
         rounds = temp;
     }
 
-
-    @Override
+    //Buffs are organized by least about of rounds remaining then by alphabetical 
     public int compare(Buff buff1, Buff buff2) {
         int bigger = 0;
         if(buff1.getRounds() == buff2.getRounds())

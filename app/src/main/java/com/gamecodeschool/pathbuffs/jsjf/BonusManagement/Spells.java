@@ -7,6 +7,7 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 
+//Class to manage buffs
 public class Spells implements Comparator<Spells>
 {
 
@@ -36,6 +37,7 @@ public class Spells implements Comparator<Spells>
     public Enums.Type getType() {
         return type;
     }
+    //Determines the duration of each spell
     public int getDuration()
     {
         int rounds;
@@ -62,6 +64,8 @@ public class Spells implements Comparator<Spells>
 
         return rounds;
     }
+
+    //Checks to see if a spell is on a class list
     public boolean isOnClassList(Enums.ClassList c)
     {
         boolean onList = false;

@@ -18,6 +18,8 @@ import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.Feats;
 
 import java.util.ArrayList;
 
+
+//Adapter is used to display feats and abilites in a grid view.  This will be with toggle buttons.
 public class FeatsGridViewAdapter extends BaseAdapter {
     private ArrayList<Feats> mFeats;
     private LayoutInflater layoutInflater;

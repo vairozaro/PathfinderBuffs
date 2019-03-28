@@ -18,7 +18,7 @@ import android.view.LayoutInflater;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-
+//This adapter manages the active buffs.  It displays the name, round remaining, and a dispel button.
 public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyViewHolder>
 {
     private List<Buff> mDataList;
@@ -47,6 +47,8 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
             buttonView.setOnClickListener(this);
         }
 
+        //On dispel button clicked remove buff from active buffs.  Update the this adapter
+        //along with the TabFragmentSpellSearch adapater
         public void onClick(View v)
         {
             if(v.getId() == buttonView.getId())

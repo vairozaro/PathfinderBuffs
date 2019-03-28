@@ -9,6 +9,7 @@ import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentAttack;
 import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentAttributes;
 import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentFeatsAbilities;
 
+//This adapter controls the Tab layout for Character.class
 public class CharacterPagerAdapter extends FragmentPagerAdapter {
     int numOfTabs;
     private String[] tabTitles = new String[]{"Attributes", "Feats/Abilities", "Attributes", "Feats/Abilities"};

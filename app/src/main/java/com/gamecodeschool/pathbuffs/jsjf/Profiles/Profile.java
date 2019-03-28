@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+//This class manages the saved information for a profile.  It consists mainly of getters and setters
 public class Profile implements Comparator<Profile>{
 
     String name;
@@ -56,6 +57,7 @@ public class Profile implements Comparator<Profile>{
     public void setSelected(char selected) {
         this.selected = selected;
     }
+    //Add a feat to profiles feat list if it not already there
     public void addFeatToProfile(String s)
     {
         Feats f = new Feats();
@@ -79,6 +81,7 @@ public class Profile implements Comparator<Profile>{
             Collections.sort(feats, new Feats(){});
         }
     }
+    //Add a ability to profiles ability list if it not already there
     public void addAbilityToProfile(String s)
     {
         Abilities a = new Abilities();
@@ -103,6 +106,7 @@ public class Profile implements Comparator<Profile>{
         }
     }
 
+    //delete a feat from list
     public void removeFeatFromProfile(String s)
     {
         Feats f = new Feats();
@@ -114,6 +118,7 @@ public class Profile implements Comparator<Profile>{
         }
         feats.remove(f);
     }
+    //Checks to see if a feat is attached to a profile
     public boolean hasFeat(String n)
     {
         boolean hasfeat = false;

@@ -20,6 +20,8 @@ import java.util.List;
 
 import static android.app.PendingIntent.getActivity;
 
+//This activity displays all classes that cast spells.  On a class selection display
+//the spells on the selected class list.
 public class spellLists extends AppCompatActivity {
 
     RecyclerView mRecyclerViewClassNames;
@@ -39,6 +41,7 @@ public class spellLists extends AppCompatActivity {
 
         currentSpellList.addAll(BuffManager.getAllSpellsList());
 
+        //add All to the class lists to display
         classListnames.add("All");
         for(Enums.ClassList x: classListEnumset)
         {
@@ -56,6 +59,7 @@ public class spellLists extends AppCompatActivity {
 
     }
 
+    //updates the list of spells for a class based on class selected
     public static void updateClassSpellList(String className, Context context)
     {
         currentSpellList.clear();

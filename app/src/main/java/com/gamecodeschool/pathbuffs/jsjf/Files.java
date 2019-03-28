@@ -18,6 +18,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+//Class that saves and opens any text files
 public class Files {
 
     static final String STATSFILENAME = "SavedStats.txt";
@@ -25,6 +26,7 @@ public class Files {
     static final String PROFILEABILITIESFILE = "ProfileAbilities.txt";
     private static LinkedList<Profile> profilesToSave = new LinkedList<>();
 
+    //saves the profile as a new profile
     public static void saveStatsFile(Context ctx)
     {
         profilesToSave = AllProfiles.getAllprofiles();
@@ -33,6 +35,7 @@ public class Files {
         try {
             FileOutputStream fOut = ctx.openFileOutput(STATSFILENAME, Context.MODE_PRIVATE);
             OutputStreamWriter outputWriter = new OutputStreamWriter(fOut);
+            //Creates a string with the following style to be saved
             //Name, Str, Dex, Con, Int, Wis, Cha, Level, BAB, y/n for default profile
             for(Profile x: profilesToSave)
             {
@@ -56,6 +59,7 @@ public class Files {
             e.printStackTrace();
         }
     }
+    //Saves the feats to the profile
     public static void saveFeatsFile(Context ctx)
     {
         profilesToSave = AllProfiles.getAllprofiles();
@@ -66,6 +70,8 @@ public class Files {
             FileOutputStream fOut = ctx.openFileOutput(PROFILEFEATSFILE, Context.MODE_PRIVATE);
             OutputStreamWriter outputWriter = new OutputStreamWriter(fOut);
 
+            //Saves the feats in the style
+            //ProfileName, Feat1, Feat2, Feat3, ...
             for(Profile x: profilesToSave)
             {
                 feats = x.getFeats();
@@ -87,6 +93,7 @@ public class Files {
         }
     }
 
+    //Open the saved stats file and load it as profiles
     public static void openStatsFile(Context ctx)
     {
         AllProfiles.clearAllProfiles();
@@ -108,7 +115,6 @@ public class Files {
 
                 for(int i = 0; i < newPro.length; i++)
                 {
-                    //proAttribute[i] = Integer.parseInt(newPro[i+1]);
                     switch (i){
                         case 0: //name
                             proName = newPro[i];
@@ -152,6 +158,7 @@ public class Files {
             e.printStackTrace();
         }
     }
+    //Open feats saved file and add the feats to the current profile
     public static void openFeatsFile(Context ctx)
     {
 

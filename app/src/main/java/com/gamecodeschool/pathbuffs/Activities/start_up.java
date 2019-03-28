@@ -37,16 +37,20 @@ public class start_up extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up);
+        //Open profile saved text file
         openStatsFile(this);
+        //Load and parse Spells and Feats XML
         parseSpellsXML();
         parseFeatsXML();
         openFeatsFile(this);
 
+        //Set buttons
         btn_setStats = (Button)findViewById(R.id.btn_set_stats);
         btn_activeSpells = (Button)findViewById(R.id.btn_active_spells);
         btn_calculateBonunes = (Button)findViewById(R.id.btn_calculate_bonuses);
         btn_spell = (Button)findViewById(R.id.btn_cast_spells);
 
+        //If no Profiles deactive buttons besides set stats button
         if(AllProfiles.currentProfile.getName().equals(""))
         {
             deactivateButtons();
@@ -55,6 +59,7 @@ public class start_up extends AppCompatActivity {
 
     }
 
+    //Start parser
     private void parseSpellsXML()
     {
         XmlPullParserFactory parserFactory;
@@ -75,6 +80,7 @@ public class start_up extends AppCompatActivity {
         }
     }
 
+    //Parse through spells and add them to all spells list in the BuffManager class
     private void processSpellsParsing(XmlPullParser parser) throws IOException, XmlPullParserException{
         ArrayList<Spells> spells = new ArrayList<>();
         int eventType = parser.getEventType();
@@ -111,6 +117,7 @@ public class start_up extends AppCompatActivity {
                         }else if("attribute".equals(eltName)){
                             currentSpell.attribute = Enums.getAttribute(Integer.parseInt(parser.nextText()));
                         }else if("class_list".equals(eltName)) {
+                            //Adds all classes as enums
                             String classMaster = parser.nextText();
                             String[] classArray = classMaster.split(",");
                             for(String s: classArray)
@@ -130,6 +137,7 @@ public class start_up extends AppCompatActivity {
         BuffManager.setAllSpellsList(spells);
     }
 
+    //Start Parser for feats
     private void parseFeatsXML()
     {
         XmlPullParserFactory parserFactory;
@@ -244,6 +252,7 @@ public class start_up extends AppCompatActivity {
         AbilitiesManager.setAllAbilitiesList(abilities);
     }*/
 
+//If there is a profile saved activate Buttons
     public static void activateButtons()
     {
         btn_spell.setAlpha(1f);
@@ -253,6 +262,7 @@ public class start_up extends AppCompatActivity {
         btn_calculateBonunes.setAlpha(1f);
         btn_calculateBonunes.setClickable(true);
     }
+    //If there are no profiles deactivate all buttons but set stats
     public void deactivateButtons()
     {
         btn_spell.setAlpha(.5f);
@@ -263,7 +273,8 @@ public class start_up extends AppCompatActivity {
         btn_calculateBonunes.setClickable(false);
 
     }
-    
+
+    //On button click load new activity
     public void gotToActivity(View view) {
         Intent intent = null;
 

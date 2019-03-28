@@ -7,6 +7,7 @@ import com.gamecodeschool.pathbuffs.jsjf.Enums;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+//Class to manage class abilities.
 public class AbilitiesManager implements Iterable<Abilities>{
 
     private static ArrayList<Abilities> allAbilitiesList;
@@ -26,6 +27,7 @@ public class AbilitiesManager implements Iterable<Abilities>{
         AbilitiesManager.allAbilitiesList = allAbilitiesList;
     }
 
+    //Calculates bonus of abilites and return as an array
     public static int[] calculateBonus()
     {
         int[] bonuses = new int[]{0,0};
@@ -75,6 +77,7 @@ public class AbilitiesManager implements Iterable<Abilities>{
         return bonuses;
     }
 
+    //Calculates Weapon Training
     public static int[] weaponTraining()
     {
         int tempLevel = BuffManager.getCasterLevel();
@@ -93,6 +96,7 @@ public class AbilitiesManager implements Iterable<Abilities>{
         return bonus;
     }
 
+    //checks to see if the Ability is currently in the active abilities list
     public static boolean isAbiltiyActive(String s)
     {
         boolean isActive = false;
@@ -107,6 +111,8 @@ public class AbilitiesManager implements Iterable<Abilities>{
 
         return isActive;
     }
+
+
     public static void addActiveAbility(String s)
     {
         Abilities a = new Abilities();

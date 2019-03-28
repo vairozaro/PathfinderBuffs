@@ -12,6 +12,9 @@ import com.gamecodeschool.pathbuffs.R;
 import com.gamecodeschool.pathbuffs.jsjf.ClickListener;
 import com.gamecodeschool.pathbuffs.jsjf.ListViewAdapters.ListViewAdaptor;
 
+//This fragment is one of the fragments for BuffTrackingActivity
+//This fragment displays the current active buffs on a player.  It displays
+//each buff name, rounds remaining and a dispel button to remove the buff
 public class TabFragmentActiveBuffs extends android.support.v4.app.Fragment {
 
     RecyclerView mRecyclerView;

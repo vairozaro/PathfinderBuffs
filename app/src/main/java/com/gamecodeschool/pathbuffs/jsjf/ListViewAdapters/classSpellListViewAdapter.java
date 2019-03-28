@@ -13,6 +13,8 @@ import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.Spells;
 
 import java.util.ArrayList;
 
+//This adapter displays the class spell list.  On class selection from classNameListViewAdapter
+//display that class
 public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellListViewAdapter.MyViewHolder>{
     static ArrayList<Spells> mClassSpells;
 
@@ -36,6 +38,8 @@ public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellLi
             name = (TextView) view.findViewById(R.id.txt_class_spell_name);
             name.setOnClickListener(this);
             button = (Button) view.findViewById(R.id.btn_spell_add);
+
+            //If Spell is added to favorites list deactivate button else activate it
             if(BuffManager.favoritesContainsSpells((String) name.getText()))
             {
                 button.setAlpha(.5f);
@@ -47,7 +51,7 @@ public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellLi
 
         }
 
-        @Override
+        //Add spell to favorites list
         public void onClick(View view) {
             BuffManager.addSpellToFavorites((String) name.getText());
 

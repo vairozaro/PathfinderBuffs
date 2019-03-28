@@ -4,6 +4,7 @@ import com.gamecodeschool.pathbuffs.jsjf.Enums;
 
 import java.util.Comparator;
 
+//Class for feats object
 public class Feats implements Comparator<Feats> {
 
     public String name;

@@ -18,6 +18,8 @@ import com.gamecodeschool.pathbuffs.jsjf.ListViewAdapters.ListViewAdaptor;
 import com.gamecodeschool.pathbuffs.jsjf.ListViewAdapters.ProfileFeatsViewAdaptor;
 import com.gamecodeschool.pathbuffs.jsjf.Profiles.AllProfiles;
 
+//This fragment is one of the fragments for BuffTrackingActivity
+//This fragment displays all the current feats that are active on a profile as toggle buttons
 public class TabFragmentFeatsAbilities extends android.support.v4.app.Fragment {
     Button btnAddFeat;
 

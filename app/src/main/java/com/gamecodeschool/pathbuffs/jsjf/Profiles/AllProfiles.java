@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+//This class manages all the profiles and the current profile that is selected
 public class AllProfiles {
-
 
     public static LinkedList<Profile> allprofiles = new LinkedList<Profile>();
     public static Profile currentProfile;
@@ -29,6 +29,7 @@ public class AllProfiles {
         }
         allprofiles.add(p);
         profileNames.add(p.getName());
+        //If a profile was saved as current profile load that as the current profile
         if(p.getSelected() == 'y' || allprofiles.size() == 1)
         {
             if(currentProfile != null)
@@ -36,10 +37,10 @@ public class AllProfiles {
                 currentProfile.setSelected('n');
             }
             currentProfile = p;
-            //BuffManager.setAttributes(p.getAttirbute());
         }
 
     }
+    //This changes the currently selected profile to a new profile
     public static Profile setProfile(String selected)
     {
         currentProfile.setSelected('n');
@@ -49,18 +50,19 @@ public class AllProfiles {
             {
                 x.setSelected('y');
                 currentProfile = x;
-                //BuffManager.setAttributes(x.getAttirbute());
             }
         }
 
         return currentProfile;
     }
+    //delete all profiles
     public static void clearAllProfiles()
     {
         allprofiles.clear();
         profileNames.clear();
 
     }
+    //Remove a profile from all profiles
     public static void deleteProfile(Profile p)
     {
         currentProfile = allprofiles.get(0);

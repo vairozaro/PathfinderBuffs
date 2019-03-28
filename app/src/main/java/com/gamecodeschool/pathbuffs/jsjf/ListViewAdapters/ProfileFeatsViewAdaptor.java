@@ -16,6 +16,9 @@ import com.gamecodeschool.pathbuffs.jsjf.Profiles.AllProfiles;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import static com.gamecodeschool.pathbuffs.jsjf.Files.saveFeatsFile;
+
+//This adapter displays the feats that are currently saved to the currently selected profile
 public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsViewAdaptor.MyViewHolder> {
     private List<Feats> mDataList;
     private final ClickListener listener;
@@ -35,19 +38,20 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
             super(view);
             listenerRef = new WeakReference<>(listener);
 
-
             featName = (TextView) view.findViewById(R.id.profile_feat_name);
             buttonView = (Button) view.findViewById(R.id.profile_delete_feat);
 
             buttonView.setOnClickListener(this);
         }
 
+        //Onclick remove the feat from the profile and save the profile feats
         public void onClick(View v)
         {
             if(v.getId() == buttonView.getId())
             {
                 AllProfiles.currentProfile.removeFeatFromProfile((String) featName.getText());
                 TabFragmentFeatsAbilities.updatelist();
+                saveFeatsFile(v.getContext());
             }
             listenerRef.get().onPositionClicked(getAdapterPosition());
         }
@@ -71,8 +75,6 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Feats feat = mDataList.get(position);
         holder.featName.setText(feat.getName());
-
-
     }
 
     @Override

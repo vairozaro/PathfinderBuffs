@@ -20,13 +20,15 @@ import com.gamecodeschool.pathbuffs.jsjf.Enums;
 
 import static android.widget.AdapterView.*;
 
+//This fragment is one of the fragments for BuffTrackingActivity
+//It displays a spinner to select the type of attack that will be used
+//The enhancement bonus of the weapon and if they are flanking or using fighting defensivly
 public class TabFragmentAttack extends android.support.v4.app.Fragment {
 
     static TextView txtAttackBonus;
     static TextView txtDamageBonus;
     static ToggleButton tbtnWeaponTraining, tbtnBralwersFlurry;
     RadioGroup radioEnhanceGroup;
-    Feats weaponTraining = new Feats();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -44,7 +46,10 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
 
         Spinner spinner = (Spinner)view.findViewById(R.id.spn_style_of_attack);
 
+        //Get the last selected style of attack and set the spinner to that value
         spinner.setSelection(BuffManager.getStyleOfAttack().getValue());
+
+        //On spinner item selected change the stype of attack and update txt fields of attack and damage
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -52,7 +57,7 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
 
                 int enhanceBonus = getEnhanceBonus();
                 BuffManager.setWeaponEnhancement(enhanceBonus);
-                Toast toast;
+
                 switch (selectedItem)
                 {
                     case "One-Handed":
@@ -83,6 +88,8 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
 
         radioEnhanceGroup = (RadioGroup)view.findViewById(R.id.rgroup_enhance);
 
+        //On change of radio button set the new enhancement bonus and update the attack and damage
+        //Textviews
         radioEnhanceGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -92,6 +99,7 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
             }
         });
 
+        //If using Brawlers Flurry update BuffManager and the attack and damage textviews
         tbtnBralwersFlurry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -109,16 +117,7 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
         tbtnWeaponTraining.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                weaponTraining.name = "Weapon Training";
-                weaponTraining.bonusTo = Enums.BonusTo.OTHER;
-                if(isChecked)
-                {
-                    FeatManager.addActiveFeat(weaponTraining);
-                    BuffManager.calculateBonus();
-                } else {
-                    FeatManager.removeActiveFeat(weaponTraining);
-                    BuffManager.calculateBonus();
-                }
+
             }
         });
 
@@ -131,6 +130,8 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
         txtDamageBonus.setText(Integer.toString(damageBonus));
     }
 
+    //Set the enhancement bonus currently selected.  MW is masterwork so a +1 to attack
+    //and a +0 to damage
     private int getEnhanceBonus ()
     {
         int bonus;
