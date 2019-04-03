@@ -22,6 +22,7 @@ import static com.gamecodeschool.pathbuffs.jsjf.Files.saveFeatsFile;
 public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsViewAdaptor.MyViewHolder> {
     private List<Feats> mDataList;
     private final ClickListener listener;
+    private Feats feat;
 
     public ProfileFeatsViewAdaptor(List<Feats> mFeatsList, ClickListener listner) {
         this.mDataList = mFeatsList;
@@ -49,7 +50,7 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
         {
             if(v.getId() == buttonView.getId())
             {
-                AllProfiles.currentProfile.removeFeatFromProfile((String) featName.getText());
+                AllProfiles.currentProfile.removeFeatFromProfile(feat);
                 TabFragmentFeatsAbilities.updatelist();
                 saveFeatsFile(v.getContext());
             }
@@ -73,7 +74,7 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Feats feat = mDataList.get(position);
+        holder.feat = mDataList.get(position);
         holder.featName.setText(feat.getName());
     }
 
