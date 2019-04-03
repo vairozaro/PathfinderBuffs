@@ -131,15 +131,8 @@ public class BuffManager implements Iterable<Buff>
         return activeBuff;
     }
     //Removes a buff from the master bufflist and from the attack or damage list it is on.
-    public static void dispelBuff(String dispelBuff)
+    public static void dispelBuff(Buff b)
     {
-        Buff b = new Buff();
-        for (Buff x: buffList) {
-            if (dispelBuff == x.getName())
-            {
-                b = x;
-            }
-        }
         if(b != null) {
             buffList.remove(b);
             switch(b.getBonusTo())
