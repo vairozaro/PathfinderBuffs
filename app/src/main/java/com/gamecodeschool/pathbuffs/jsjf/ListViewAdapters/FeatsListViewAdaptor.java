@@ -27,6 +27,7 @@ import static com.gamecodeschool.pathbuffs.jsjf.Files.saveFeatsFile;
 public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdaptor.MyViewHolder>{
     private List<Feats> mFeats;
     private final ClickListener listener;
+    private Feats feat;
 
     public FeatsListViewAdaptor(ArrayList<Feats> mFeatsList, ClickListener listner) {
         this.mFeats = mFeatsList;
@@ -58,7 +59,7 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
         {
             if(v.getId() == button.getId())
             {
-                AllProfiles.currentProfile.addFeatToProfile((String) name.getText());
+                AllProfiles.currentProfile.addFeatToProfile(feat);
                 saveFeatsFile(v.getContext());
                 TabFragmentFeatsAbilities.updatelist();
                 allFeats.updateList();
@@ -71,8 +72,6 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
             return true;
         }
 
-
-
     }
 
     @Override
@@ -84,11 +83,11 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
 
     @Override
     public void onBindViewHolder(FeatsListViewAdaptor.MyViewHolder holder, int position) {
-        Feats feat = mFeats.get(position);
+        holder.feat = mFeats.get(position);
         holder.name.setText(feat.getName());
         //If feat is currently saved to profile remove button so can not be added again.
         //Else display the add button.
-        if(AllProfiles.currentProfile.hasFeat((String) holder.name.getText()))
+        if(AllProfiles.currentProfile.hasFeat(holder.feat)
         {
             holder.button.setVisibility(View.INVISIBLE);
             holder.button.setClickable(false);
