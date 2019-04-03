@@ -107,15 +107,8 @@ public class Profile implements Comparator<Profile>{
     }
 
     //delete a feat from list
-    public void removeFeatFromProfile(String s)
+    public void removeFeatFromProfile(Feats f)
     {
-        Feats f = new Feats();
-        for (Feats x: feats) {
-            if (s == x.getName())
-            {
-                f = x;
-            }
-        }
         feats.remove(f);
     }
     //Checks to see if a feat is attached to a profile
