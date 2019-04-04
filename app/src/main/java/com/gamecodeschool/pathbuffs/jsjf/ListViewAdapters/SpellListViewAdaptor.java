@@ -25,6 +25,7 @@ import java.util.List;
 public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdaptor.MyViewHolder>{
     private List<Spells> mSpells;
     private final ClickListener listener;
+    private Spells spell;
 
     public SpellListViewAdaptor(ArrayList<Spells> mSpellList, ClickListener listner) {
         this.mSpells = mSpellList;
@@ -78,7 +79,12 @@ public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdap
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.spell = mSpells.get(position);
+<<<<<<< HEAD
         holder.name.setText(holder.spell.getName());
+=======
+        holder.name.setText(spell.getName());
+        
+>>>>>>> upstream/master
 
         //Checks to see if the current Spell is an active buff.  If it is remove the button
         //so it can not be added again.  Else enable button

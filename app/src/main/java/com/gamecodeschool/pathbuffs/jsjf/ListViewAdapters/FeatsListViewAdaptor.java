@@ -27,6 +27,7 @@ import static com.gamecodeschool.pathbuffs.jsjf.Files.saveFeatsFile;
 public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdaptor.MyViewHolder>{
     private List<Feats> mFeats;
     private final ClickListener listener;
+    private Feats feat;
 
     public FeatsListViewAdaptor(ArrayList<Feats> mFeatsList, ClickListener listner) {
         this.mFeats = mFeatsList;
@@ -81,10 +82,17 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
     @Override
     public void onBindViewHolder(FeatsListViewAdaptor.MyViewHolder holder, int position) {
         holder.feat = mFeats.get(position);
+<<<<<<< HEAD
         holder.name.setText(holder.feat.getName());
         //If feat is currently saved to profile remove button so can not be added again.
         //Else display the add button.
         if(AllProfiles.currentProfile.hasFeat(holder.feat))
+=======
+        holder.name.setText(feat.getName());
+        //If feat is currently saved to profile remove button so can not be added again.
+        //Else display the add button.
+        if(AllProfiles.currentProfile.hasFeat(holder.feat)
+>>>>>>> upstream/master
         {
             holder.button.setVisibility(View.INVISIBLE);
             holder.button.setClickable(false);

@@ -60,8 +60,12 @@ public class Profile implements Comparator<Profile>{
     //Add a feat to profiles feat list if it not already there
     public void addFeatToProfile(Feats f)
     {
+<<<<<<< HEAD
         if(!feats.contains(f))
         {
+=======
+        if(!feats.contain(f)) {
+>>>>>>> upstream/master
             feats.add(f);
         }
     }
@@ -98,7 +102,11 @@ public class Profile implements Comparator<Profile>{
     //Checks to see if a feat is attached to a profile
     public boolean hasFeat(Feats f)
     {
+<<<<<<< HEAD
         return feats.contains(f);
+=======
+        return feats.contain(f);
+>>>>>>> upstream/master
     }
 
     public ArrayList<Feats> getFeats() {

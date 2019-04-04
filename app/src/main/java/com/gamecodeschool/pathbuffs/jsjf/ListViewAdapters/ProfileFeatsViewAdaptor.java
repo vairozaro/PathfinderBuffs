@@ -22,6 +22,7 @@ import static com.gamecodeschool.pathbuffs.jsjf.Files.saveFeatsFile;
 public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsViewAdaptor.MyViewHolder> {
     private List<Feats> mDataList;
     private final ClickListener listener;
+    private Feats feat;
 
     public ProfileFeatsViewAdaptor(List<Feats> mFeatsList, ClickListener listner) {
         this.mDataList = mFeatsList;
@@ -75,7 +76,11 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.feat = mDataList.get(position);
+<<<<<<< HEAD
         holder.featName.setText(holder.feat.getName());
+=======
+        holder.featName.setText(feat.getName());
+>>>>>>> upstream/master
     }
 
     @Override
