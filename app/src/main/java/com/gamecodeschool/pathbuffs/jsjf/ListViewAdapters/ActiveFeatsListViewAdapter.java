@@ -47,9 +47,9 @@ public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeats
         public void onCheckedChanged(CompoundButton buttonView, boolean checked) {
             if(checked)
             {
-                FeatManager.addActiveFeat((String) name.getText());
+                FeatManager.addActiveFeat(feats);
             } else {
-                FeatManager.removeActiveFeat((String) name.getText());
+                FeatManager.removeActiveFeat(feats);
             }
             feats.isActive = checked;
             BuffManager.calculateBonus();

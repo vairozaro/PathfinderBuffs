@@ -8,16 +8,10 @@ import com.gamecodeschool.pathbuffs.jsjf.Profiles.AllProfiles;
 import com.gamecodeschool.pathbuffs.jsjf.Enums;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
-
-/**
- * Created by Jason on 5/5/2018.
- */
 
 //This class manages all the Spells class and Buff class along with calculating the total bonus
 public class BuffManager implements Iterable<Buff>
@@ -67,80 +61,30 @@ public class BuffManager implements Iterable<Buff>
                 break;
         }
     }
-    //Finds the spell and adds it as a buff
-    public static void castSpell(String n)
-    {
-        Spells s = new Spells();
-        for(Spells x: allSpellsList)
-        {
-            if(x.getName().equals(n))
-            {
-                s = x;
-            }
-        }
-        addBuff(new Buff(s.name, s.type, s.bonus_to, s.bonus, s.getDuration(), s.scaling, s.speed));
-    }
     //Add a spell to the favorites list
-    public static void addSpellToFavorites(String n)
+    public static void addSpellToFavorites(Spells s)
     {
-        if(!favoritesContainsSpells(n)) {
-            for (Spells s : allSpellsList) {
-                if (s.getName().equals(n)) {
-                    favoriteSpells.add(s);
-                }
-            }
+        if(!favoriteSpells.contains(s)) {
+            favoriteSpells.add(s);
         }
     }
-    public static void removeSpellFromFavorites(String n)
+    public static void removeSpellFromFavorites(Spells s)
     {
-        Spells s = new Spells();
-        for(Spells x: favoriteSpells)
-        {
-            if(x.getName().equals(n))
-            {
-                s = x;
-            }
-        }
         favoriteSpells.remove(s);
     }
     //Check to see if a spell is on the favorites list
-    public static boolean favoritesContainsSpells(String n)
+    public static boolean favoritesContainsSpells(Spells s)
     {
-        boolean contains = false;
-        for (Spells s: favoriteSpells)
-        {
-            if(s.getName().equals(n))
-            {
-                contains = true;
-            }
-        }
-        return contains;
+        return favoriteSpells.contains(s);
     }
     //Check to see if a buff is on the active list
-    public static boolean isBuffActive(String n)
+    public static boolean isBuffActive(Spells s)
     {
-        boolean activeBuff = false;
-
-        for (Buff x: buffList)
-        {
-            if(x.getName().equals(n))
-            {
-                activeBuff = true;
-            }
-        }
-
-        return activeBuff;
+        return buffList.contains(s);
     }
     //Removes a buff from the master bufflist and from the attack or damage list it is on.
-    public static void dispelBuff(String dispelBuff)
+    public static void dispelBuff(Buff b)
     {
-        Buff b = new Buff();
-        for (Buff x: buffList) {
-            if (dispelBuff == x.getName())
-            {
-                b = x;
-            }
-        }
         if(b != null) {
             buffList.remove(b);
             switch(b.getBonusTo())
@@ -184,7 +128,7 @@ public class BuffManager implements Iterable<Buff>
         {
             for(Buff x: tempList)
             {
-                dispelBuff(x.getName());
+                dispelBuff(x);
             }
         }
     }

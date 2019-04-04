@@ -31,6 +31,7 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView featName;
         public Button buttonView;
+        private Feats feat;
         private WeakReference<ClickListener> listenerRef;
 
 
@@ -49,7 +50,7 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
         {
             if(v.getId() == buttonView.getId())
             {
-                AllProfiles.currentProfile.removeFeatFromProfile((String) featName.getText());
+                AllProfiles.currentProfile.removeFeatFromProfile(feat);
                 TabFragmentFeatsAbilities.updatelist();
                 saveFeatsFile(v.getContext());
             }
@@ -73,8 +74,8 @@ public class ProfileFeatsViewAdaptor extends RecyclerView.Adapter<ProfileFeatsVi
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Feats feat = mDataList.get(position);
-        holder.featName.setText(feat.getName());
+        holder.feat = mDataList.get(position);
+        holder.featName.setText(holder.feat.getName());
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 
 import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentSpellSearch;
+import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.Buff;
 import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.BuffManager;
 import com.gamecodeschool.pathbuffs.R;
 import com.gamecodeschool.pathbuffs.TabFragments.TabFragmentActiveBuffs;
@@ -34,6 +35,7 @@ public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdap
         public TextView name;
         public Button button;
         private WeakReference<ClickListener> listenerRef;
+        private Spells spell;
 
         public MyViewHolder(final View view, ClickListener listener){
             super(view);
@@ -52,7 +54,7 @@ public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdap
         {
             if(v.getId() == button.getId())
             {
-                BuffManager.castSpell((String) name.getText());
+                BuffManager.addBuff(new Buff(spell.name, spell.type, spell.bonus_to, spell.calculateScalingBonus(), spell.getDuration(), spell.speed));
                 TabFragmentActiveBuffs.updatelist();
                 TabFragmentSpellSearch.updatelist();
             }
@@ -75,12 +77,12 @@ public class SpellListViewAdaptor extends RecyclerView.Adapter<SpellListViewAdap
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Spells spell = mSpells.get(position);
-        holder.name.setText(spell.getName());
+        holder.spell = mSpells.get(position);
+        holder.name.setText(holder.spell.getName());
 
         //Checks to see if the current Spell is an active buff.  If it is remove the button
         //so it can not be added again.  Else enable button
-        if(BuffManager.isBuffActive((String) holder.name.getText()))
+        if(BuffManager.isBuffActive(holder.spell))
         {
             holder.button.setVisibility(View.INVISIBLE);
             holder.button.setClickable(false);

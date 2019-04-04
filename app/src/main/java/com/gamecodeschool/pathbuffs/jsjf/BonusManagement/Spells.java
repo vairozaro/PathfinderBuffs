@@ -64,6 +64,35 @@ public class Spells implements Comparator<Spells>
 
         return rounds;
     }
+    //Returns a bonus based on if it scales
+    public int calculateScalingBonus()
+    {
+        int tempBonus;
+        int level = BuffManager.getCasterLevel();
+        switch (scaling)
+        {
+            case NO_SCALING:
+                tempBonus = bonus;
+                break;
+            case ONE_PER_THREE_MAX_THREE:
+                if(level < 6)
+                {
+                    tempBonus = bonus;
+                }else if(level < 9)
+                {
+                    tempBonus = bonus *2;
+                }else
+                {
+                    tempBonus = bonus *3;
+                }
+                break;
+            default:
+                tempBonus = bonus;
+                break;
+        }
+
+        return tempBonus;
+    }
 
     //Checks to see if a spell is on a class list
     public boolean isOnClassList(Enums.ClassList c)

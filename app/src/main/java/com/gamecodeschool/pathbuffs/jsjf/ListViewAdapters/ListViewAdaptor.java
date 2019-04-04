@@ -33,12 +33,12 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
         public TextView buffName,rounds;
         public Button buttonView;
         private WeakReference<ClickListener> listenerRef;
+        private Buff buff;
 
 
         public MyViewHolder(final View view, ClickListener listener){
             super(view);
             listenerRef = new WeakReference<>(listener);
-
 
             buffName = (TextView) view.findViewById(R.id.spellName);
             rounds= (TextView) view.findViewById(R.id.rounds);
@@ -53,7 +53,7 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
         {
             if(v.getId() == buttonView.getId())
             {
-                BuffManager.dispelBuff((String) buffName.getText());
+                BuffManager.dispelBuff(buff);
                 TabFragmentActiveBuffs.updatelist();
                 TabFragmentSpellSearch.updatelist();
             }
@@ -77,9 +77,9 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Buff buff = mDataList.get(position);
-        holder.buffName.setText(buff.getName());
-        holder.rounds.setText(buff.getRoundsString());
+        holder.buff = mDataList.get(position);
+        holder.buffName.setText(holder.buff.getName());
+        holder.rounds.setText(holder.buff.getRoundsString());
 
     }
 

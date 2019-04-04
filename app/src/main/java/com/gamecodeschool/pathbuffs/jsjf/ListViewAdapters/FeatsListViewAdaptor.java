@@ -37,7 +37,7 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
         public TextView name;
         public Button button;
         private WeakReference<ClickListener> listenerRef;
-        Feats f;
+        private Feats feat;
 
         //Sets view and variables
         public MyViewHolder(final View view, ClickListener listener){
@@ -48,8 +48,6 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
             button = (Button) view.findViewById(R.id.btn_feat_add);
             button.setOnClickListener(this);
 
-            f = FeatManager.getFeat((String) name.getText());
-
         }
 
         //On click add the feat to the current profile, save the feats to that profile and update
@@ -58,7 +56,7 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
         {
             if(v.getId() == button.getId())
             {
-                AllProfiles.currentProfile.addFeatToProfile((String) name.getText());
+                AllProfiles.currentProfile.addFeatToProfile(feat);
                 saveFeatsFile(v.getContext());
                 TabFragmentFeatsAbilities.updatelist();
                 allFeats.updateList();
@@ -71,8 +69,6 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
             return true;
         }
 
-
-
     }
 
     @Override
@@ -84,11 +80,11 @@ public class FeatsListViewAdaptor extends RecyclerView.Adapter<FeatsListViewAdap
 
     @Override
     public void onBindViewHolder(FeatsListViewAdaptor.MyViewHolder holder, int position) {
-        Feats feat = mFeats.get(position);
-        holder.name.setText(feat.getName());
+        holder.feat = mFeats.get(position);
+        holder.name.setText(holder.feat.getName());
         //If feat is currently saved to profile remove button so can not be added again.
         //Else display the add button.
-        if(AllProfiles.currentProfile.hasFeat((String) holder.name.getText()))
+        if(AllProfiles.currentProfile.hasFeat(holder.feat))
         {
             holder.button.setVisibility(View.INVISIBLE);
             holder.button.setClickable(false);

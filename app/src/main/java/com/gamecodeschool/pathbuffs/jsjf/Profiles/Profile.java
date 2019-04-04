@@ -58,27 +58,11 @@ public class Profile implements Comparator<Profile>{
         this.selected = selected;
     }
     //Add a feat to profiles feat list if it not already there
-    public void addFeatToProfile(String s)
+    public void addFeatToProfile(Feats f)
     {
-        Feats f = new Feats();
-        boolean newFeat = true;
-
-        for(Feats y: feats)
+        if(!feats.contains(f))
         {
-            if(y.getName().equals(s))
-            {
-                newFeat = false;
-            }
-        }
-
-        if(newFeat) {
-            for (Feats x : FeatManager.getAllFeatsList()) {
-                if (x.getName().equals(s)) {
-                    f = x;
-                }
-            }
             feats.add(f);
-            Collections.sort(feats, new Feats(){});
         }
     }
     //Add a ability to profiles ability list if it not already there
@@ -107,31 +91,14 @@ public class Profile implements Comparator<Profile>{
     }
 
     //delete a feat from list
-    public void removeFeatFromProfile(String s)
+    public void removeFeatFromProfile(Feats f)
     {
-        Feats f = new Feats();
-        for (Feats x: feats) {
-            if (s == x.getName())
-            {
-                f = x;
-            }
-        }
         feats.remove(f);
     }
     //Checks to see if a feat is attached to a profile
-    public boolean hasFeat(String n)
+    public boolean hasFeat(Feats f)
     {
-        boolean hasfeat = false;
-
-        for (Feats x: feats)
-        {
-            if(x.getName().equalsIgnoreCase(n))
-            {
-                hasfeat = true;
-            }
-        }
-
-        return hasfeat;
+        return feats.contains(f);
     }
 
     public ArrayList<Feats> getFeats() {

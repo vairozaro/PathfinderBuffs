@@ -1,5 +1,6 @@
 package com.gamecodeschool.pathbuffs.jsjf.Profiles;
 
+import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.FeatManager;
 import com.gamecodeschool.pathbuffs.jsjf.BonusManagement.Feats;
 
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class AllProfiles {
         {
             if(x.getName().equals(s))
             {
-                x.addFeatToProfile(f);
+                x.addFeatToProfile(FeatManager.getFeat(f));
             }
         }
     }

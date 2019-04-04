@@ -68,9 +68,9 @@ public class FeatsGridViewAdapter extends BaseAdapter {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
-                    FeatManager.addActiveFeat((String) holder.name.getText());
+                    FeatManager.addActiveFeat(feat);
                 } else {
-                    FeatManager.removeActiveFeat((String) holder.name.getText());
+                    FeatManager.removeActiveFeat(feat);
                 }
                 BuffManager.calculateBonus();
             }

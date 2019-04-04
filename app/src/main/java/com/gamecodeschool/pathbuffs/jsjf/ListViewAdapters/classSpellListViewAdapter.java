@@ -31,6 +31,7 @@ public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellLi
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView name;
         public Button button;
+        private Spells spell;
 
         public MyViewHolder(final View view){
             super(view);
@@ -40,7 +41,7 @@ public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellLi
             button = (Button) view.findViewById(R.id.btn_spell_add);
 
             //If Spell is added to favorites list deactivate button else activate it
-            if(BuffManager.favoritesContainsSpells((String) name.getText()))
+            if(BuffManager.favoritesContainsSpells(spell))
             {
                 button.setAlpha(.5f);
                 button.setClickable(false);
@@ -50,11 +51,9 @@ public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellLi
             }
 
         }
-
         //Add spell to favorites list
         public void onClick(View view) {
-            BuffManager.addSpellToFavorites((String) name.getText());
-
+            BuffManager.addSpellToFavorites(spell);
         }
     }
 
@@ -67,8 +66,8 @@ public class classSpellListViewAdapter extends RecyclerView.Adapter<classSpellLi
 
     @Override
     public void onBindViewHolder(classSpellListViewAdapter.MyViewHolder holder, int position) {
-        Spells spell = mClassSpells.get(position);
-        holder.name.setText(spell.getName());
+        holder.spell = mClassSpells.get(position);
+        holder.name.setText(holder.spell.getName());
     }
 
     @Override

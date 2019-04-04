@@ -1,5 +1,5 @@
 <!--Duration 0=round/level, 1=1 minute, 2= min/level, 3 = 10min/level, 4=hour/level-->
-<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 99=Other-->
+<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 4=Other-->
 <!--Type 0=Enhance, 1=Luck, 2=Sacred, 3=Profane, 4=Untyped, 5=Alchemical, 6=Moral-->
 <Spells>
     <spell>
@@ -34,13 +34,13 @@
     <spell>
         <name>Bestow Weapon Proficiency</name>
         <duration>2</duration>
-        <bonus_to>99</bonus_to>
+        <bonus_to>4</bonus_to>
         <class_list>ALCHEMIST,CLERIC,INQUISITOR,MAGUS,PALADIN,PSYCHIC,WITCH,WIZARD</class_list>
     </spell>
     <spell>
         <name>Resist Energy</name>
         <duration>3</duration>
-        <bonus_to>99</bonus_to>
+        <bonus_to>4</bonus_to>
         <scaling>2</scaling>
         <class_list>ALCHEMIST,BLOODRAGER,CLERIC,DRUID,INQUISITOR,OCCULTIST,PALADIN,PSYCHIC,RANGER,SHAMAN,WIZARD,SPIRITUALIST,SUMMONER</class_list>
     </spell>
