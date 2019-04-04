@@ -68,4 +68,5 @@
     <string name="title_activity_all_feats">allFeats</string>
     <string name="title_activity_profile_feats">profileFeats</string>
     <string name="title_activity_character">Character</string>
+    <string name="flanking">Flanking</string>
 </resources>

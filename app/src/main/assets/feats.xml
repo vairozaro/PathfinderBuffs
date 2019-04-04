@@ -1,8 +1,8 @@
-<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 99=Other-->
+<!--Bonus To 0=Attack, 1=Damage, 2=Stats, 3=Attack/Damage, 4=Other-->
 <feats>
     <feat>
         <name>Power Attack</name>
-        <bonus_to>99</bonus_to>
+        <bonus_to>4</bonus_to>
     </feat>
     <feat>
         <name>Weapon Focus</name>

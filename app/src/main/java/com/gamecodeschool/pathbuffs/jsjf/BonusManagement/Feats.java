@@ -10,6 +10,7 @@ public class Feats implements Comparator<Feats> {
     public String name;
     public Enums.BonusTo bonusTo;
     public int bonus = 0;
+    public boolean isActive = false;
 
     public Feats(){}
 

@@ -30,6 +30,8 @@ public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeats
     public static class MyViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
         public TextView name;
         public ToggleButton button;
+        private Feats feats;
+        public boolean isChecked = false;
 
 
         public MyViewHolder(final View view){
@@ -37,25 +39,19 @@ public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeats
 
             name = (TextView) view.findViewById(R.id.txt_feat_name_toggle);
             button = (ToggleButton) view.findViewById(R.id.tbtn_feat);
-            //Checks to see if feat is currently active and adding bonus
-            //if so set the button to on.
-            if(FeatManager.isFeatActive((String) name.getText()))
-            {
-                button.setChecked(true);
-            }
-
             button.setOnCheckedChangeListener(this);
         }
 
 
         //Add or remove feat from active feat list based on toggle button change state
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if(isChecked)
+        public void onCheckedChanged(CompoundButton buttonView, boolean checked) {
+            if(checked)
             {
                 FeatManager.addActiveFeat((String) name.getText());
             } else {
                 FeatManager.removeActiveFeat((String) name.getText());
             }
+            feats.isActive = checked;
             BuffManager.calculateBonus();
         }
     }
@@ -69,8 +65,11 @@ public class ActiveFeatsListViewAdapter extends RecyclerView.Adapter<ActiveFeats
 
     @Override
     public void onBindViewHolder(ActiveFeatsListViewAdapter.MyViewHolder holder, int position) {
-        Feats feat = mFeats.get(position);
-        holder.name.setText(feat.getName());
+        holder.feats = mFeats.get(position);
+        holder.name.setText(holder.feats.getName());
+        //Checks to see if feat is currently active and adding bonus
+        //if so set the button to on.
+        holder.button.setChecked(holder.feats.isActive);
     }
 
     @Override

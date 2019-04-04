@@ -39,6 +39,7 @@ public class spellLists extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spell_lists);
 
+        currentSpellList.clear();
         currentSpellList.addAll(BuffManager.getAllSpellsList());
 
         //add All to the class lists to display
@@ -66,7 +67,7 @@ public class spellLists extends AppCompatActivity {
         if (className.equals("All")) {
             currentSpellList.addAll(BuffManager.getAllSpellsList());
         }else {
-            currentSpellList = (ArrayList<Spells>) BuffManager.getClassSpellList(Enums.getClassList(className));
+            currentSpellList = (ArrayList<Spells>) BuffManager.getClassSpellList(Enums.ClassList.valueOf(className.toUpperCase()));
         }
 
         mAdapterClassSpellList.refresh(currentSpellList);

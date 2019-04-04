@@ -10,7 +10,7 @@
         <scaling>0</scaling>
         <type>0</type>
         <attribute>0</attribute>
-        <class_list>Alchemist,Bloodrager,Cleric,Druid,Magus,Paladin,Psychic,Shaman,Summoner,Wizard</class_list>
+        <class_list>ALCHEMIST,BLOODRAGER,CLERIC,DRUID,MAGUS,PALADIN,PSYCHIC,SHAMAN,SUMMONER,WIZARD</class_list>
     </spell>
     <spell>
         <name>Divine Favor</name>
@@ -19,7 +19,7 @@
         <bonus>1</bonus>
         <scaling>1</scaling>
         <type>1</type>
-        <class_list>Cleric,Inquisitor,Paladin</class_list>
+        <class_list>CLERIC,INQUISITOR,PALADIN</class_list>
     </spell>
     <spell>
         <name>Mighty Strength</name>
@@ -29,20 +29,20 @@
         <scaling>0</scaling>
         <type>0</type>
         <attribute>0</attribute>
-        <class_list>Cleric,Paladin</class_list>
+        <class_list>CLERIC,PALADIN</class_list>
     </spell>
     <spell>
         <name>Bestow Weapon Proficiency</name>
         <duration>2</duration>
         <bonus_to>99</bonus_to>
-        <class_list>Alchemist,Cleric,Inquisitor,Magus,Paladin,Psychic,Witch,Wizard</class_list>
+        <class_list>ALCHEMIST,CLERIC,INQUISITOR,MAGUS,PALADIN,PSYCHIC,WITCH,WIZARD</class_list>
     </spell>
     <spell>
         <name>Resist Energy</name>
         <duration>3</duration>
         <bonus_to>99</bonus_to>
         <scaling>2</scaling>
-        <class_list>Alchemist,Bloodrager,Cleric,Druid,Inquisitor,Occultist,Paladin,Psychic,Ranger,Shaman,Wizard,Spiritualist,Summoner</class_list>
+        <class_list>ALCHEMIST,BLOODRAGER,CLERIC,DRUID,INQUISITOR,OCCULTIST,PALADIN,PSYCHIC,RANGER,SHAMAN,WIZARD,SPIRITUALIST,SUMMONER</class_list>
     </spell>
     <spell>
         <name>Divine Power</name>
@@ -50,7 +50,7 @@
         <bonus>1</bonus>
         <bonus_to>3</bonus_to>
         <type>1</type>
-        <class_list>Cleric,Inquisitor,Shaman</class_list>
+        <class_list>CLERIC,INQUISITOR,SHAMAN</class_list>
         <speed>1</speed>
     </spell>
 </Spells>

@@ -43,11 +43,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/_0" />
-                <RadioButton
-                    android:id="@+id/rbtn_enhanceMW"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/m"/>
 
                 <RadioButton
                     android:id="@+id/rbtn_enhance1"
@@ -78,6 +73,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/_5" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_enhanceMW"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -96,13 +97,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="@string/weapon_training" />
+                    android:text="@string/flanking" />
                 <ToggleButton
-                    android:id="@+id/tbtn_weapon_training"
+                    android:id="@+id/tbtn_flanking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/weapon_training" />
+                    android:layout_margin="10dp" />
 
             </LinearLayout>
             <LinearLayout

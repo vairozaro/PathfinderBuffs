@@ -31,8 +31,9 @@ public class BuffManager implements Iterable<Buff>
     private static int ability = 0;
     private static final int attackBonus = 0;
     private static final int damageBonus = 1;
-
     private static int weaponEnhancement = 0;
+
+    private static Enums.FLANKING flanking = Enums.FLANKING.NO_FLANKING;
     private static Enums.StyleOfAttack styleOfAttack = Enums.StyleOfAttack.ONE_HANDED;
     private static Enums.Speed SPEED = Enums.Speed.NO_SPEED;
     private static Enums.AmountOfWeapons WEAPONS = Enums.AmountOfWeapons.ONE_WEAPON;
@@ -306,8 +307,10 @@ public class BuffManager implements Iterable<Buff>
             }
         }
 
+        bonus[attackBonus] = bonus[attackBonus] + flanking.getValue();
+
         //set the textviews with that attack and damage
-        TabFragmentAttack.changeTextViews(attackToString(bonus[attackBonus]), bonus[damageBonus]);
+        TabFragmentAttack.changeTextViews(attackToString(bonus[attackBonus]), Integer.toString(bonus[damageBonus]));
 
     }
     //Displays the attack as a string
@@ -388,21 +391,11 @@ public class BuffManager implements Iterable<Buff>
     }
 
 //Getters
-    public static List<Buff> getBuffList()
-    {
-        return buffList;
-    }
+    public static List<Buff> getBuffList() { return buffList; }
     public static int getBab() { return bab;}
-    public static int getCasterLevel()
-    {
-        return casterLevel;
-    }
-    public static ArrayList<Spells> getAllSpellsList() {
-        return allSpellsList;
-    }
-    public static Enums.StyleOfAttack getStyleOfAttack() {
-        return styleOfAttack;
-    }
+    public static int getCasterLevel() { return casterLevel; }
+    public static ArrayList<Spells> getAllSpellsList() { return allSpellsList; }
+    public static Enums.StyleOfAttack getStyleOfAttack() { return styleOfAttack; }
     //Gets the modifier for any particular ability score
     public static int getModifier(Enums.Attribute stat)
     {
@@ -433,30 +426,16 @@ public class BuffManager implements Iterable<Buff>
         }
         return s;
     }
+    public static Enums.FLANKING getFlanking() { return flanking; }
+    public static Enums.AmountOfWeapons getWEAPONS() { return WEAPONS; }
 //Setters
-    public static void setCasterLevel(int casterLevel) {
-        BuffManager.casterLevel = casterLevel;
-    }
-    public static void setBab(int bab) {
-        BuffManager.bab = bab;
-    }
-    public static void setAllSpellsList(ArrayList<Spells> list)
-    {
-        allSpellsList = list;
-    }
-    public static void setSPEED(Enums.Speed SPEED) {
-        BuffManager.SPEED = SPEED;
-    }
-    public static void setStyleOfAttack(Enums.StyleOfAttack styleOfAttack) {
-        BuffManager.styleOfAttack = styleOfAttack;
-    }
-    public static void setWeaponEnhancement(int weaponEnhancement) {
-        BuffManager.weaponEnhancement = weaponEnhancement;
-    }
-    public static void setWEAPONS(Enums.AmountOfWeapons WEAPONS) {
-        BuffManager.WEAPONS = WEAPONS;
-    }
-    public static Enums.AmountOfWeapons getWEAPONS() {
-        return WEAPONS;
-    }
+    public static void setCasterLevel(int casterLevel) { BuffManager.casterLevel = casterLevel; }
+    public static void setBab(int bab) { BuffManager.bab = bab; }
+    public static void setAllSpellsList(ArrayList<Spells> list) { allSpellsList = list; }
+    public static void setSPEED(Enums.Speed SPEED) { BuffManager.SPEED = SPEED; }
+    public static void setStyleOfAttack(Enums.StyleOfAttack styleOfAttack) { BuffManager.styleOfAttack = styleOfAttack; }
+    public static void setWeaponEnhancement(int weaponEnhancement) { BuffManager.weaponEnhancement = weaponEnhancement; }
+    public static void setWEAPONS(Enums.AmountOfWeapons WEAPONS) { BuffManager.WEAPONS = WEAPONS; }
+    public static void setFlanking(Enums.FLANKING flanking) { BuffManager.flanking = flanking; }
+
 }

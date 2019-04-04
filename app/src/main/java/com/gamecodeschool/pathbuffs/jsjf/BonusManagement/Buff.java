@@ -106,7 +106,7 @@ public class Buff implements Comparator<Buff>
         rounds = temp;
     }
 
-    //Buffs are organized by least about of rounds remaining then by alphabetical 
+    //Buffs are organized by least about of rounds remaining then by alphabetical
     public int compare(Buff buff1, Buff buff2) {
         int bigger = 0;
         if(buff1.getRounds() == buff2.getRounds())

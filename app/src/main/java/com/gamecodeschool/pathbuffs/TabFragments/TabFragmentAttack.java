@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,81 +28,56 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
 
     static TextView txtAttackBonus;
     static TextView txtDamageBonus;
-    static ToggleButton tbtnWeaponTraining, tbtnBralwersFlurry;
+    static ToggleButton tbtnFlanking, tbtnBralwersFlurry;
     RadioGroup radioEnhanceGroup;
+    RadioButton radioButton;
+    Spinner spinner;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_bonus_calculation, container, false);
 
+        //assign variables to the layouts they are tracking.
         txtAttackBonus = (TextView)view.findViewById(R.id.txt_attack_number);
         txtDamageBonus = (TextView)view.findViewById(R.id.txt_damage_number);
-        tbtnWeaponTraining = (ToggleButton)view.findViewById(R.id.tbtn_weapon_training);
+        tbtnFlanking = (ToggleButton)view.findViewById(R.id.tbtn_flanking);
         tbtnBralwersFlurry = (ToggleButton)view.findViewById(R.id.tbtn_brawlers_flurry);
+        radioEnhanceGroup = (RadioGroup)view.findViewById(R.id.rgroup_enhance);
+        spinner = (Spinner)view.findViewById(R.id.spn_style_of_attack);
 
-        if (BuffManager.getWEAPONS() == Enums.AmountOfWeapons.TWO_WEAPONS)
-        {
-            tbtnBralwersFlurry.setChecked(true);
-        }
 
-        Spinner spinner = (Spinner)view.findViewById(R.id.spn_style_of_attack);
 
-        //Get the last selected style of attack and set the spinner to that value
-        spinner.setSelection(BuffManager.getStyleOfAttack().getValue());
-
-        //On spinner item selected change the stype of attack and update txt fields of attack and damage
+        //On spinner item selected change the stlye of attack and update txt fields of attack and damage
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String selectedItem = adapterView.getItemAtPosition(position).toString();
-
-                int enhanceBonus = getEnhanceBonus();
-                BuffManager.setWeaponEnhancement(enhanceBonus);
-
-                switch (selectedItem)
-                {
-                    case "One-Handed":
-                        BuffManager.setStyleOfAttack(Enums.StyleOfAttack.ONE_HANDED);
-                        break;
-                    case "Two-Handed":
-                        BuffManager.setStyleOfAttack(Enums.StyleOfAttack.TWO_HANDED);
-                        break;
-                    case "Thrown":
-                        BuffManager.setStyleOfAttack(Enums.StyleOfAttack.THROWN);
-                        break;
-                    case "Ranged":
-                        BuffManager.setStyleOfAttack(Enums.StyleOfAttack.RANGED);
-                        break;
-                    default:
-                        BuffManager.setStyleOfAttack(Enums.StyleOfAttack.ONE_HANDED);
-                        break;
-                }
+                BuffManager.setStyleOfAttack(Enums.StyleOfAttack.valueOf(position));
                 BuffManager.calculateBonus();
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) { }
         });
-
-        radioEnhanceGroup = (RadioGroup)view.findViewById(R.id.rgroup_enhance);
 
         //On change of radio button set the new enhancement bonus and update the attack and damage
         //Textviews
         radioEnhanceGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                int enhanceBonus = getEnhanceBonus();
-                BuffManager.setWeaponEnhancement(enhanceBonus);
+            public void onCheckedChanged(RadioGroup radioGroup, int position) {
+                //Gets the id of the selected radio button.  If the button is masterwork,
+                //set the bonus to 99 else set it to Integer of the text of the radio button.
+                int selectedID = radioEnhanceGroup.getCheckedRadioButtonId();
+                radioButton = (RadioButton)view.findViewById(selectedID);
+                if(selectedID == R.id.rbtn_enhanceMW)
+                {
+                    BuffManager.setWeaponEnhancement(99);
+                }else {
+                    BuffManager.setWeaponEnhancement(Integer.parseInt((String) radioButton.getText()));
+                }
+
                 BuffManager.calculateBonus();
             }
         });
 
         //If using Brawlers Flurry update BuffManager and the attack and damage textviews
         tbtnBralwersFlurry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(isChecked)
                 {
@@ -114,57 +90,44 @@ public class TabFragmentAttack extends android.support.v4.app.Fragment {
             }
         });
 
-        tbtnWeaponTraining.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
+        //Set a listener to the toggle button to change the state of flanking
+        tbtnFlanking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-
+                if(isChecked)
+                {
+                    BuffManager.setFlanking(Enums.FLANKING.FLANKING);
+                    BuffManager.calculateBonus();
+                } else {
+                    BuffManager.setFlanking(Enums.FLANKING.NO_FLANKING);
+                    BuffManager.calculateBonus();
+                }
             }
         });
+
+    //Checks to see the last selected of the spinners and buttons and updates then to that.
+        //Get the last selected style of attack and set the spinner to that value
+        spinner.setSelection(BuffManager.getStyleOfAttack().getValue());
+
+        //Checks to see if Bralwers flurry is active.  If so put toggle to on position
+        if (BuffManager.getWEAPONS() == Enums.AmountOfWeapons.TWO_WEAPONS)
+        {
+            tbtnBralwersFlurry.setChecked(true);
+        }
+        //Checks to see if flanking is active.  If so put toggle to on position
+        if (BuffManager.getFlanking() == Enums.FLANKING.NO_FLANKING)
+        {
+            tbtnFlanking.setChecked(false);
+        }else{
+            tbtnFlanking.setChecked(true);
+        }
 
         return view;
     }
 
-    public static void changeTextViews(String attackBonus, int damageBonus)
+    public static void changeTextViews(String attackBonus, String damageBonus)
     {
         txtAttackBonus.setText(attackBonus);
-        txtDamageBonus.setText(Integer.toString(damageBonus));
+        txtDamageBonus.setText(damageBonus);
     }
 
-    //Set the enhancement bonus currently selected.  MW is masterwork so a +1 to attack
-    //and a +0 to damage
-    private int getEnhanceBonus ()
-    {
-        int bonus;
-
-        int selectID = radioEnhanceGroup.getCheckedRadioButtonId();
-
-        switch (selectID){
-            case R.id.rbtn_enhance0:
-                bonus = 0;
-                break;
-            case R.id.rbtn_enhance1:
-                bonus = 1;
-                break;
-            case R.id.rbtn_enhance2:
-                bonus = 2;
-                break;
-            case R.id.rbtn_enhance3:
-                bonus = 3;
-                break;
-            case R.id.rbtn_enhance4:
-                bonus = 4;
-                break;
-            case R.id.rbtn_enhance5:
-                bonus = 5;
-                break;
-            case R.id.rbtn_enhanceMW:
-                bonus = 99;
-                break;
-            default:
-                bonus = 0;
-                break;
-        }
-
-        return bonus;
-    }
 }

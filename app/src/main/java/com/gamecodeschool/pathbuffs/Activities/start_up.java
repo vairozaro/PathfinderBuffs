@@ -105,27 +105,27 @@ public class start_up extends AppCompatActivity {
                         if("name".equals(eltName)) {
                             currentSpell.name = parser.nextText();
                         }else if("duration".equals(eltName)) {
-                            currentSpell.duration = Enums.getDuration(Integer.parseInt(parser.nextText()));
+                            currentSpell.duration = Enums.Duration.valueOf(Integer.parseInt(parser.nextText()));
                         }else if ("bonus_to".equals(eltName)){
-                            currentSpell.bonus_to = Enums.getBonusTo(Integer.parseInt(parser.nextText()));
+                            currentSpell.bonus_to = Enums.BonusTo.valueOf(Integer.parseInt(parser.nextText()));
                         }else if("bonus".equals(eltName)){
                             currentSpell.bonus = Integer.parseInt(parser.nextText());
                         }else if ("scaling".equals(eltName)){
-                            currentSpell.scaling = Enums.getScaling(Integer.parseInt(parser.nextText()));
+                            currentSpell.scaling = Enums.Scaling.valueOf(Integer.parseInt(parser.nextText()));
                         }else if("type".equals(eltName)){
-                            currentSpell.type = Enums.getType(Integer.parseInt(parser.nextText()));
+                            currentSpell.type = Enums.Type.valueOf(Integer.parseInt(parser.nextText()));
                         }else if("attribute".equals(eltName)){
-                            currentSpell.attribute = Enums.getAttribute(Integer.parseInt(parser.nextText()));
+                            currentSpell.attribute = Enums.Attribute.valueOf(Integer.parseInt(parser.nextText()));
                         }else if("class_list".equals(eltName)) {
                             //Adds all classes as enums
                             String classMaster = parser.nextText();
                             String[] classArray = classMaster.split(",");
                             for(String s: classArray)
                             {
-                                currentSpell.classLists.add(Enums.getClassList(s));
+                                currentSpell.classLists.add(Enums.ClassList.valueOf(s.toUpperCase()));
                             }
                         }else if("speed".equals(eltName)){
-                            currentSpell.speed = Enums.getSpeed(Integer.parseInt(parser.nextText()));
+                            currentSpell.speed = Enums.Speed.SPEED_ACTIVE;
                         }
                     }
                     break;
@@ -182,7 +182,7 @@ public class start_up extends AppCompatActivity {
                         if("name".equals(eltName)) {
                             currentFeat.name = parser.nextText();
                         }else if ("bonus_to".equals(eltName)){
-                            currentFeat.bonusTo = Enums.getBonusTo(Integer.parseInt(parser.nextText()));
+                            currentFeat.bonusTo = Enums.BonusTo.valueOf(Integer.parseInt(parser.nextText()));
                         }else if("bonus".equals(eltName)){
                             currentFeat.bonus = Integer.parseInt(parser.nextText());
                         }
